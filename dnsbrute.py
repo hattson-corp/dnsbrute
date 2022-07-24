@@ -43,9 +43,10 @@ class dnsbrute:
         if self.dnsGenFlag:
             dnsgen = os.system('git clone https://github.com/ProjectAnte/dnsgen ; cd dnsgen ; pip3 install -r requirements.txt ; python3 setup.py install')
     def checkInstall(self):
-        with open("resolver", 'a+') as re:
-            re.write("8.8.8.8\n8.8.4.4")
-            re.close()
+        if not os.path.isfile('resolver'):
+            with open("resolver", 'a+') as re:
+                re.write("8.8.8.8\n8.8.4.4")
+                re.close()
         checkGo = os.system("go version")
         checkSubFinder = os.system("subfinder -version")
         checkShuffleDns = os.system("shuffledns --version")
