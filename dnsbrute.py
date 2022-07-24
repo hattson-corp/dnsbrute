@@ -23,7 +23,7 @@ class dnsbrute:
         self.wordlist = wordlist
     def dnsShuffle(self):
         os.chdir(self.workdir)
-        os.system('shuffledns -list dnsgen{} -massdns $(pwd)/massdnsApp -o shuffledns{} -silent '.format(self.site, self.site))
+        os.system('shuffledns -r resolver -list dnsgen{} -massdns $(pwd)/massdnsApp -o shuffledns{} -silent '.format(self.site, self.site))
     def dnsGen(self):
         os.chdir(self.workdir)
         os.system('dnsgen subfinder{} -w {} >> dnsgen{}'.format(self.site, self.wordlist, self.site))
